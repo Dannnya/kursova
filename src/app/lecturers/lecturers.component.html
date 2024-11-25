@@ -1,16 +1,21 @@
 <body>
-    <p class="title">Викладачі</p>
-    <div class="lecturers-container">
-      <div *ngFor="let lecturer of lecturers" class="lecturers">
-        <div class="photo">
-            <img src="\images\photo1.jpg" alt="">
-        </div>
-        <div class="inf">  
-          <p class="lecturerName">{{ lecturer.name }}</p>
-          <p class="lecturerDepartment">{{ lecturer.department }}</p>
-          <button [disabled]="lecturer.status=='taken' || lecturer.status=='pending'" (click)="sendRequest()">Надіслати запит</button>
-        </div>
+
+
+  <p class="title">Викладачі</p>
+
+  <app-multi-select-dropdown (selectionChanged)="onSelectionChanged($event)"></app-multi-select-dropdown>
+
+  <div class="lecturers-container">
+    <div *ngFor="let lecturer of lecturersDisplayed" class="lecturers">
+      <div class="photo">
+        <img src="\images\photo1.jpg" alt="">
+      </div>
+      <div class="inf">
+        <p class="lecturerName">{{ lecturer.name }}</p>
+        <p class="lecturerDepartment">{{ lecturer.department }}</p>
+        <button [disabled]="lecturer.status != 'free'" (click)="sendRequest()" [ngClass]="lecturer.status">Надіслати
+          запит</button>
       </div>
     </div>
-  </body>
-  
+  </div>
+</body>

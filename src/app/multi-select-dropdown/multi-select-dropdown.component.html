@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <!-- Button to toggle dropdown visibility -->
+    <button class="dropdown-toggle" type="button" (click)="toggleDropdown()">
+        Select Options
+    </button>
+
+    <!-- Dropdown menu, only visible when isDropdownOpen is true -->
+    <div *ngIf="isDropdownOpen" class="dropdown-menu">
+        <label *ngFor="let item of items">
+            <input type="checkbox" [checked]="selectedItems.includes(item)" (change)="toggleSelection(item)" />
+            {{ item }}
+        </label>
+    </div>
+</div>
